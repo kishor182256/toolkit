@@ -12,22 +12,22 @@ const {Title} = Typography;
 
 const Homepage = () => {
 
-  const {data,isFetching} = useGetCryptosQuery();
+  const {data,isFetching} = useGetCryptosQuery(10);
   
 
   const globalData = data?.data?.stats;
-  console.log('Homepagedata', data,'isFetching', globalData);
-
+  console.log('Homepagedata', data);
+   if(isFetching) return 'Loading...'
   return (
     <>
       <Title level={2} className='heading'>Global Crypto App</Title>
-      <Row>
+    <Row>
         <Col span={12}><Statistic title='Total Currencies' value={globalData.total}/></Col>
         <Col span={12}><Statistic title='Total Exchanges' value={globalData.totalExchanges}/></Col>
         <Col span={12}><Statistic title='Total Market Cap' value={millify(globalData.totalMarketCap)}/></Col>
         <Col span={12}><Statistic title='Total 24h Volume' value={millify(globalData.total24hVolume)}/></Col>
         <Col span={12}><Statistic title='Total Markets' value={millify(globalData.totalMarkets)}/></Col>
-      </Row>
+      </Row> 
       <div className='home-heading-container'>
         <Title level={2} className='home-title'>Top 10 Cryptos in the World</Title>
         <Title level={3} className='show-more'><Link to='/cryptocurrencies'>Show More</Link></Title>

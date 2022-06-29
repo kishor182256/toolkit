@@ -2,7 +2,7 @@ import React from 'react'
 
 const Exchanges = () => {
   return (
-    <div>Exchanges</div>
+    <div>To Acces This Route Premium Plan is Requred</div>
   )
 }
 
