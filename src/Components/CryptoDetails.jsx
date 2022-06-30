@@ -20,8 +20,7 @@ const CryptoDetails = () => {
   const { data: coinHistory } = useGetCryptoHistoryQuery({ coinId, timeperiod });
   const cryptoDetails = data?.data?.coin;
 
-  console.log('timeperiod: ' + timeperiod);
-  
+  console.log('coinHistory',coinHistory);
   if (isFetching) return <Loader />;
 
   
@@ -50,8 +49,8 @@ const CryptoDetails = () => {
         </Title>
         <p>{cryptoDetails.name} live price in US Dollar (USD). View value statistics, market cap and supply.</p>
       </Col>
-      <Select defaultValue="7d" className="select-timeperiod" placeholder="Select Timeperiod" 
-      value={timeperiod}
+      <Select  className="select-timeperiod" placeholder="Select Timeperiod" 
+      
        onChange={(value) => setTimeperiod(value)}>
         {time.map((date) => <Option key={date}>{date}</Option>)}
       </Select>
